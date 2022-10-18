@@ -1,4 +1,6 @@
-![Logo](images/logo.png)
+<a href="https://github.com/DevJelleS/Procestechniek">
+    <img src="images/logo.png" alt="Logo" width="531" height="286">
+</a>
 
 # Procestechniek
 
