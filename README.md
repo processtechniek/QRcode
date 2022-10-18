@@ -21,8 +21,9 @@ Dit project is gebouwd met de volgende programmeertalen:
 
 Font dat gebruikt wordt:
 
-- [![Raleway][raleway]](https://fonts.google.com/specimen/Raleway?query=raleway)
-  [Raleway]: https://img.shields.io/badge/Raleway-4DFF89?style=for-the-badge
+- [![RALEWAY][raleway]](https://fonts.google.com/specimen/Raleway?query=raleway)
+
+[raleway]: https://img.shields.io/badge/Raleway-4DFF89?style=for-the-badge
 
 ## Authors
 
