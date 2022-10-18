@@ -1,6 +1,6 @@
 <div>
 <a href="https://github.com/DevJelleS/Procestechniek">
-    <img src="images/logo.png" alt="Logo" width="531" height="286">
+    <img src="images/logo.png" alt="Logo" width="200" height="100">
 </a>
 </div>
 
