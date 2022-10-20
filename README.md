@@ -26,8 +26,10 @@ Dit project is gebouwd met de volgende programmeertalen:
 Font dat gebruikt wordt:
 
 - [![RALEWAY][raleway]](https://fonts.google.com/specimen/Raleway?query=raleway)
+- [![DRAWSQL][drawsql]](https://drawsql.app/teams/jelles-team/diagrams/procestechniek)
 
 [raleway]: https://img.shields.io/badge/Raleway-4DFF89?style=for-the-badge
+[drawsql]: https://img.shields.io/badge/DRAWSQL-4DFF89?style=for-the-badge
 
 ## Authors
 
