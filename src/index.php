@@ -90,7 +90,6 @@ mysqli_close($link);
 function createInfo($id, $info) {
     $info = <<<INFO
         <div id="$id" class="tabcontent">
-            <h3>test</h3>
             <p>$info</p>
         </div>
         
