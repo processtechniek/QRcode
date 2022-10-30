@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap');
+
+*{
+  font-family: 'Raleway';
+}
+
 /* Style the tab */
 .tab {
   overflow: hidden;
