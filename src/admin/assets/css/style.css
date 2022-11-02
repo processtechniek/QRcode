@@ -1,0 +1,505 @@
+/* [x] Html + Body */
+
+html, body{
+    height: 100%;
+    width: 100%;
+    background-color: #1C1C1C;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+}
+
+/* [x] Login */
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 700px;
+    color: #FFFFFF;
+}
+
+.login-form input{
+    background-color: #262627;
+    height: 25px;
+    border-radius: 10px;
+}
+
+form input:focus{
+    color: #FFFFFF !important;
+    outline: none;
+    border: 1px #4763E4 solid !important;
+}
+
+form input{
+    color: #FFFFFF;
+}
+
+.form-control{
+    border: 1px #A0A0A0 solid;
+}
+
+.invalid-feedback{
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+.wrapper h2{
+    font-size: 40px;
+    font-weight: 100;
+    margin: 0;
+}
+
+.wrapper p{
+    margin: 0;
+}
+
+.password-container,
+.username-container{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 15px;
+}
+
+.password-container label,
+.username-container label{
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.login-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-button{
+    width: 300px;
+    height: 35px !important;
+    color: #FFFFFF;
+    background-color: #4763E4 !important;
+    border: none;
+    font-size: 15px;
+}
+
+.input-button:hover{
+    cursor: pointer;
+    background-color: #304396 !important;
+}
+
+/* [x] Sidenav Dashboard */
+
+.sidenav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 250px;
+    background-color: #212121;
+    border-right: 2px #383838 solid;
+    position: absolute;
+}
+
+.sidenav-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    height: 60px;
+}
+
+.sidenav-title h1{
+    font-size: bold;
+    font-size: 35px;
+    margin-right: 5px;
+}
+
+.sidenav-title h2{
+    font-weight: lighter;
+    font-size: 35px;
+    color: #A8A8A8;
+}
+
+.sidenav-border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 2px #383838 solid;
+    flex-direction: column;
+    height: 120px;
+}
+
+.sidenav-account{
+    color: #A8A8A8;
+    width: 80%;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.sidenav-links{
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 80%;
+}
+
+.sidenav-links a{
+    margin-top: 50px;
+    font-size: 19px;
+    text-decoration: none;
+    color: #A8A8A8;
+    display: flex;
+    align-items: center;
+}
+
+.sidenav-links a:hover{
+    color: #ffffff;
+}
+
+iconify-icon{
+    margin-right: 5px;
+}
+
+.sidenav-uitlog{
+    font-size: 19px;
+    width: 80%;
+}
+
+.sidenav-uitlog a{
+    text-decoration: none;
+    color: #A8A8A8;
+}
+
+.sidenav-uitlog a:hover{
+        color: #ffffff;
+}
+
+/* [x] Overzicht */
+
+.container{
+    position: absolute;
+    margin-left: 252px;
+    width: calc(100% - 252px);
+}
+
+.container h1{
+    margin-left: 50px;
+    font-weight: lighter;
+    font-size: 40px;
+    letter-spacing: .1rem;
+    margin-bottom: 50px;
+}
+
+.overzicht-container h2{
+    font-weight: lighter;
+    font-size: 20px;
+}
+
+.overzicht-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.overzicht-container iconify-icon{
+    font-size: 80px;
+    font-weight: lighter;
+}
+
+.aantal-studenten,
+.aantal-items,
+.aantal-geleende-items{
+    width: 300px;
+    height: 150px;
+    background-color: #262627;
+    border-radius: 10px;
+    border: 2px #383838 solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.aantal-stundeten-text,
+.aantal-items-text,
+.aantal-geleende-items-text{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+.itemcount,
+.studentcount,
+.rentcount{
+    color: #A8A8A8;
+}
+
+.aantal-studenten-icon,
+.aantal-items-icon,
+.aantal-geleende-items-icon{
+    margin-top: auto;
+    color: #A8A8A8;
+}
+
+/* [x] Studenten */
+
+.students_wrapper{
+    width: 90%;
+}
+
+.students_container{
+    width: 1180px;
+    margin-left: 30px;
+}
+
+.student-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 1100px;
+}
+
+.student-buttons input{
+    border: 2px #A8A8A8 solid;
+    border-radius: 5px;
+    background-color: #1C1C1C;
+    height: 24px;
+    color: #A8A8A8;
+}
+
+.student-search-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.student-search-container input:hover,
+.student-search-container input:focus{
+    border: 2px #4763E4 solid !important;
+    outline: none;
+    color: #ffffff;
+}
+
+.student-search-container iconify-icon{
+    font-size: 30px;
+    color: #A8A8A8;
+}
+
+.student-toevoegen{
+    text-decoration: none;
+    width: 170px;
+    height: 30px;
+    background-color: #4763E4;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.student_table{
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+}
+
+.student_table td{
+    width: 250px;
+    height: 50px;
+}
+
+.student_table tbody{
+    overflow-y: scroll;
+    height: 500px;
+    display: block;
+}
+
+.student_table th{
+    width: 250px;
+    border-bottom: 2px #383838 solid;
+    color: #A8A8A8;
+}
+
+.table-icons{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.table-icons:hover{
+    color: #A8A8A8;
+}
+
+/* [x] Stundent Overzicht */
+
+.stundent-info{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+
+.form-group label{
+    font-weight: bold;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.form-group{
+    text-align: left;
+    width: 250px;
+}
+
+.form-group b{
+    font-weight: lighter;
+    font-size: 20px;
+    color: #A8A8A8;
+}
+
+.student-top-container,
+.student-bottom-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 150px;
+    margin-left: 5em;
+}
+
+.student-middle-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: left;
+    height: 150px;
+    margin-left: 5em;
+}
+
+.student-terug{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 10px 75px 10px 75px;
+    background-color: #4763E4;
+    border-radius: 5px;
+}
+
+/* [x] Student toevoegen */
+
+.create-form-container{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.create-top-container,
+.create-bottom-container{
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    height: 100px;
+}
+
+.create-middle-container{
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    height: 100px;
+}
+
+.form-group-create{
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+.form-group-create label{
+    font-weight: bold;
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+}
+
+.form-group-create input{
+    outline: none;
+    border: 2px #FFFFFF solid;
+    background-color: #1C1C1C;
+    width: 200px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.create-form-buttons{
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.create-button-container{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.create-cancel-button{
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 5px 40px 5px 40px;
+    background-color: #757575;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-add-button{
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 5px 40px 5px 40px;
+    background-color: #35DF19;
+    border-radius: 5px;
+    border: 2px #35DF19 solid;
+}
+
+.create-add-button{
+    font-size: 15px;
+}
+
+.form-control input:hover,
+.form-control input:focus{
+    color: #FFFFFF !important;
+    border: #4763E4 solid !important;
+}
+
+/* [x] Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

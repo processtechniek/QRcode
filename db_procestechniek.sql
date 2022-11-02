@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2022 at 01:44 PM
+-- Generation Time: Nov 02, 2022 at 02:04 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -40,7 +40,7 @@ INSERT INTO `tb_category` (`id`, `name`) VALUES
 (1, 'Procesbeschrijving'),
 (2, 'Grondschemas'),
 (3, 'P+I'),
-(4, 'erik');
+(4, 'Test');
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,14 @@ CREATE TABLE `tb_document` (
   `documentname` varchar(200) NOT NULL,
   `type_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_document`
+--
+
+INSERT INTO `tb_document` (`id`, `uuid`, `documentname`, `type_id`) VALUES
+(1, 'test', 'uitleg.pdf', 1),
+(2, 'test', 'foto1.png', 2);
 
 -- --------------------------------------------------------
 
@@ -85,6 +93,7 @@ INSERT INTO `tb_info` (`id`, `uuid`, `category_id`, `information`) VALUES
 --
 
 CREATE TABLE `tb_part` (
+  `id` int(11) NOT NULL,
   `uuid` varchar(200) NOT NULL,
   `name` varchar(200) NOT NULL,
   `qrcode` varchar(200) NOT NULL
@@ -94,8 +103,8 @@ CREATE TABLE `tb_part` (
 -- Dumping data for table `tb_part`
 --
 
-INSERT INTO `tb_part` (`uuid`, `name`, `qrcode`) VALUES
-('test', 'test', 'test.png');
+INSERT INTO `tb_part` (`id`, `uuid`, `name`, `qrcode`) VALUES
+(1, 'test', 'JH-14', 'test.png');
 
 -- --------------------------------------------------------
 
@@ -108,6 +117,14 @@ CREATE TABLE `tb_role` (
   `name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_role`
+--
+
+INSERT INTO `tb_role` (`id`, `name`) VALUES
+(1, 'Docent'),
+(2, 'Beheerder');
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +135,14 @@ CREATE TABLE `tb_type` (
   `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_type`
+--
+
+INSERT INTO `tb_type` (`id`, `name`) VALUES
+(1, 'Bestanden'),
+(2, 'Afbeeldingen');
 
 -- --------------------------------------------------------
 
@@ -132,6 +157,13 @@ CREATE TABLE `tb_user` (
   `password` varchar(200) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_user`
+--
+
+INSERT INTO `tb_user` (`id`, `username`, `email`, `password`, `role_id`) VALUES
+(3, 'test', 'test@gmail.com', '$2y$10$YiquZdwDuKLZX3zgyLSzg.BDClgJ5z77T6F59xAjf452FTFtJc12S', 1);
 
 --
 -- Indexes for dumped tables
@@ -153,6 +185,12 @@ ALTER TABLE `tb_document`
 -- Indexes for table `tb_info`
 --
 ALTER TABLE `tb_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_part`
+--
+ALTER TABLE `tb_part`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -187,7 +225,7 @@ ALTER TABLE `tb_category`
 -- AUTO_INCREMENT for table `tb_document`
 --
 ALTER TABLE `tb_document`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_info`
@@ -196,22 +234,28 @@ ALTER TABLE `tb_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `tb_part`
+--
+ALTER TABLE `tb_part`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tb_role`
 --
 ALTER TABLE `tb_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_type`
 --
 ALTER TABLE `tb_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
