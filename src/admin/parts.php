@@ -26,7 +26,7 @@
                             echo '<table class="student_table">';
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>ID</th>";
+                                        echo "<th>uuid</th>";
                                         echo "<th>Naam</th>";
                                         echo "<th>Acties</th>";
                                     echo "</tr>";
@@ -34,7 +34,7 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td>" . $row['uuid'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="viewPart.php?uuid='. $row['uuid'] .'" class="table-icons" title="Bekijk Item" data-toggle="tooltip"><iconify-icon icon="bi:eye-fill"></iconify-icon></a>';
