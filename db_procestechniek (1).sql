@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2022 at 10:37 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 03, 2022 at 10:35 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +49,7 @@ INSERT INTO `tb_category` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `tb_document` (
-  `id` int(11) NOT NULL,
+  `iddoc` int(11) NOT NULL,
   `uuid` varchar(200) NOT NULL,
   `documentname` varchar(200) NOT NULL,
   `type_id` int(11) NOT NULL
@@ -59,10 +59,9 @@ CREATE TABLE `tb_document` (
 -- Dumping data for table `tb_document`
 --
 
-INSERT INTO `tb_document` (`id`, `uuid`, `documentname`, `type_id`) VALUES
-(1, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'uitleg.pdf', 1),
+INSERT INTO `tb_document` (`iddoc`, `uuid`, `documentname`, `type_id`) VALUES
 (2, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'foto1.png', 2),
-(3, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'test.pdf', 1);
+(16, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'hond-pup-buiten.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -180,7 +179,7 @@ ALTER TABLE `tb_category`
 -- Indexes for table `tb_document`
 --
 ALTER TABLE `tb_document`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`iddoc`);
 
 --
 -- Indexes for table `tb_info`
@@ -226,7 +225,7 @@ ALTER TABLE `tb_category`
 -- AUTO_INCREMENT for table `tb_document`
 --
 ALTER TABLE `tb_document`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `iddoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tb_info`
@@ -238,7 +237,7 @@ ALTER TABLE `tb_info`
 -- AUTO_INCREMENT for table `tb_part`
 --
 ALTER TABLE `tb_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tb_role`
