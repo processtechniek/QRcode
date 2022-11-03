@@ -19,6 +19,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
   <title>Procestechniek</title>
 </head>
 <body>
