@@ -12,6 +12,15 @@ html, body{
 
 /* [x] Login */
 
+.logo-img img{
+    width: 200px;
+}
+
+.logo-img2 img{
+    width: 150px;
+}
+
+
 .wrapper{
     display: flex;
     align-items: center;
@@ -135,10 +144,15 @@ form input{
 }
 
 .sidenav-account{
+    margin-top: 10px;
     color: #A8A8A8;
     width: 80%;
     margin-bottom: 5px;
     font-size: 15px;
+}
+
+.sidenav-account span {
+    color: #d6d6d6;
 }
 
 .sidenav-links{

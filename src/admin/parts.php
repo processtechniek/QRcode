@@ -9,7 +9,7 @@
                     <div class="student-buttons">
                       <div class="student-search-container">
                       </div>
-                        <a href="createItem.php" class="student-toevoegen"><i class="fa fa-plus"></i> Part Toevoegen</a>
+                        <a href="createPart.php" class="student-toevoegen"><i class="fa fa-plus"></i> Part Toevoegen</a>
                     </div>
                     <?php
                   
@@ -19,7 +19,7 @@
                     // https://stackoverflow.com/questions/35034428/how-to-merge-multiple-images-and-text-into-single-image
 
                     // Attempt select query execution
-                    $sql = "SELECT tb_part.id, tb_part.name, tb_part.qrcode
+                    $sql = "SELECT tb_part.uuid, tb_part.id, tb_part.name, tb_part.qrcode
                     FROM tb_part";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
@@ -37,10 +37,10 @@
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="viewItem.php?id='. $row['id'] .'" class="table-icons" title="Bekijk Item" data-toggle="tooltip"><iconify-icon icon="bi:eye-fill"></iconify-icon></a>';
-                                            echo '<a href="editItem.php?id='. $row['id'] .'" class="table-icons" title="Update Item" data-toggle="tooltip"><iconify-icon icon="clarity:pencil-solid"></iconify-icon></a>';
-                                            echo '<a href="deleteItem.php?id='. $row['id'] .'" class="table-icons" title="Verwijder Item" data-toggle="tooltip"><iconify-icon icon="bxs:trash-alt"></iconify-icon></a>';
-                                            echo '<a href="'. $path . $row['qrcode'] .'" class="table-icons" title="Download QRCode" data-toggle="tooltip" download><iconify-icon icon="vaadin:qrcode"></iconify-icon></a>';
+                                            echo '<a href="viewPart.php?uuid='. $row['uuid'] .'" class="table-icons" title="Bekijk Item" data-toggle="tooltip"><iconify-icon icon="bi:eye-fill"></iconify-icon></a>';
+                                            echo '<a href="editPart.php?uuid='. $row['uuid'] .'" class="table-icons" title="Update Item" data-toggle="tooltip"><iconify-icon icon="clarity:pencil-solid"></iconify-icon></a>';
+                                            echo '<a href="deletePart.php?uuid='. $row['uuid'] .'" class="table-icons" title="Verwijder Item" data-toggle="tooltip"><iconify-icon icon="bxs:trash-alt"></iconify-icon></a>';
+                                            echo '<a href="'. 'parts/' . $row['uuid'] . '/' . $row['qrcode'] .'" class="table-icons" title="Download QRCode" data-toggle="tooltip" download><iconify-icon icon="vaadin:qrcode"></iconify-icon></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
@@ -49,7 +49,7 @@
                             // Free result set
                             mysqli_free_result($result);
                         } else{
-                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+                            echo '<div class="alert alert-danger"><em>Geen parts gevonden.</em></div>';
                         }
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";

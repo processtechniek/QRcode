@@ -99,12 +99,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <div class="wrapper">
-        <h2>Procestechniek</h2>
-        <p>Inloggen dashboard Procestechniek</p>
+        <div class="logo-img">
+            <img src="assets/images/logo.png" alt="logo">
+        </div>
 
         <?php 
         if(!empty($login_err)){
-            # TODO Dit moet nog worden gestyeld. Tekst moet kleiner en meer space tussen <wrapper> <p>Inloggen dashboard ICT Opslag</p> en meer naar links
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
         }        
         ?>

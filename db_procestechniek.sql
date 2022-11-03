@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2022 at 02:04 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 03, 2022 at 02:11 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,8 +60,9 @@ CREATE TABLE `tb_document` (
 --
 
 INSERT INTO `tb_document` (`id`, `uuid`, `documentname`, `type_id`) VALUES
-(1, 'test', 'uitleg.pdf', 1),
-(2, 'test', 'foto1.png', 2);
+(1, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'uitleg.pdf', 1),
+(2, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'foto1.png', 2),
+(3, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'test.pdf', 1);
 
 -- --------------------------------------------------------
 
@@ -81,10 +82,10 @@ CREATE TABLE `tb_info` (
 --
 
 INSERT INTO `tb_info` (`id`, `uuid`, `category_id`, `information`) VALUES
-(1, 'test', 1, 'text'),
-(2, 'test', 2, 'text2'),
-(3, 'test', 3, 'text3'),
-(4, 'test', 4, 'text4');
+(1, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 1, 'tekst 1'),
+(2, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 2, 'tekst 2'),
+(3, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 3, 'tekst 3'),
+(4, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 4, 'tekst 4');
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ CREATE TABLE `tb_part` (
 --
 
 INSERT INTO `tb_part` (`id`, `uuid`, `name`, `qrcode`) VALUES
-(1, 'test', 'JH-14', 'test.png');
+(21, '4850f5a9-ec4c-4984-abe5-e62f60b411fc', 'JH-14', 'QR-4850f5a9-ec4c-4984-abe5-e62f60b411fc.png');
 
 -- --------------------------------------------------------
 
@@ -141,8 +142,8 @@ CREATE TABLE `tb_type` (
 --
 
 INSERT INTO `tb_type` (`id`, `name`) VALUES
-(1, 'Bestanden'),
-(2, 'Afbeeldingen');
+(4, 'Bestanden'),
+(5, 'Afbeeldingen');
 
 -- --------------------------------------------------------
 
@@ -163,7 +164,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `email`, `password`, `role_id`) VALUES
-(3, 'test', 'test@gmail.com', '$2y$10$YiquZdwDuKLZX3zgyLSzg.BDClgJ5z77T6F59xAjf452FTFtJc12S', 1);
+(4, 'Jelle', 'jelle.s3112@gmail.com', '$2y$10$59Z.KdZp.tRP3AkyHmzuMuST2jajGY0ODC1L.04FL6vIQ2d2gG7BC', 2);
 
 --
 -- Indexes for dumped tables
@@ -225,7 +226,7 @@ ALTER TABLE `tb_category`
 -- AUTO_INCREMENT for table `tb_document`
 --
 ALTER TABLE `tb_document`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_info`
@@ -237,7 +238,7 @@ ALTER TABLE `tb_info`
 -- AUTO_INCREMENT for table `tb_part`
 --
 ALTER TABLE `tb_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_role`
@@ -249,13 +250,13 @@ ALTER TABLE `tb_role`
 -- AUTO_INCREMENT for table `tb_type`
 --
 ALTER TABLE `tb_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

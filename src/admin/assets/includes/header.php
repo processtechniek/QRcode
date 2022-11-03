@@ -24,8 +24,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
     <div class="sidenav">
         <div class="sidenav-border">
-            <div class="sidenav-title"><h1>LOGO</div>
-            <div class="sidenav-account">Welkom, <?php echo htmlspecialchars($_SESSION["username"]); ?></div>
+            <div class="sidenav-title">
+                <div class="logo-img2">
+                    <img src="assets/images/logo.png" alt="logo">
+                </div>
+            </div>
+            <div class="sidenav-account">Welkom, <span><?php echo htmlspecialchars($_SESSION["username"]); ?></span></div>
         </div>
         <div class="sidenav-links">
             <a href="index.php"><iconify-icon icon="akar-icons:dashboard"></iconify-icon>Overzicht</a>

@@ -1,138 +1,112 @@
 <?php
-// Include config file
+
 require_once "config.php";
 
 session_start();
-
 
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
- 
+
+
 // Define variables and initialize with empty values
-$username = $email = $password = $confirm_password = $roleid = "";
-$username_err  = $email_err  = $password_err  = $confirm_password_err  = $roleid_err  = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Validate username
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
-    } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM tb_user WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = trim($_POST["username"]);
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-                
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
-                } else{
-                    $username = trim($_POST["username"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+$test = "";
+$test_err = "";
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
+if($_SERVER["REQUEST_METHOD"] == "POST"){ 
 
-    // Validate email
-    if(empty(trim($_POST["email"]))){
-        $email_err = "Please enter a email.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM tb_user WHERE email = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_email);
-            
-            // Set parameters
-            $param_email = trim($_POST["email"]);
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-                
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $email_err = "This email is already taken.";
-                } else{
-                    $email = trim($_POST["email"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+// Validate password
+if(empty(trim($_POST["test"]))){
+    $test_err = "Please enter a password.";     
+} else {
+    $test = trim($_POST["test"]);
+}
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-    
-    // Validate password
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
-    } else{
-        $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
-        }
-    }
 
-      // Validate roleid
-      $input_roleid = trim($_POST["roleid"]);
-      if(empty($input_roleid)){
-          $roleid_err = "Dit veld is verplicht.";     
-      } else{
-          $roleid = $input_roleid;
-      }
-    
-    
+
+function gen_uuid() {
+    return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+        // 32 bits for "time_low"
+        mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+
+        // 16 bits for "time_mid"
+        mt_rand( 0, 0xffff ),
+
+        // 16 bits for "time_hi_and_version",
+        // four most significant bits holds version number 4
+        mt_rand( 0, 0x0fff ) | 0x4000,
+
+        // 16 bits, 8 bits for "clk_seq_hi_res",
+        // 8 bits for "clk_seq_low",
+        // two most significant bits holds zero and one for variant DCE1.1
+        mt_rand( 0, 0x3fff ) | 0x8000,
+
+        // 48 bits for "node"
+        mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+    );
+}
+
+$uuid = gen_uuid();
+
+
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($roleid_err)){
+    if(empty($test_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO tb_user (username, email, password, role_id) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO tb_part (uuid, name) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_username, $param_email, $param_password, $param_roleid);
+            mysqli_stmt_bind_param($stmt, "ss", $param_uuid, $param_test);
             
-            $param_username = $username;
-            $param_email = $email;
-            $param_password = password_hash($password, PASSWORD_DEFAULT);
-            $param_roleid = $roleid;
+            $param_uuid = $uuid;
+            $param_test = $test;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
+
+                if (!file_exists("parts/$uuid")) {
+                    mkdir("parts/$uuid", 0777, true);
+                    } else {
+                        return;
+                    }
+
+                    require_once 'phpqrcode/qrlib.php';
+
+                    $path = "parts/$uuid/";
+                    // $qrcode = $path.time().".png";
+                    // $qrimage = time().".png";
+                    $qrcode = $path."QR-".$uuid.".png";
+                    $qrimage = "QR-".$uuid.".png";
+
+                    $url = $_SERVER['REQUEST_URI'];
+
+                    QRcode :: png("http://localhost/Projects/Procestechniek/src/tablet/info.php?uuid=" . $uuid, $qrcode, 'H',3 , 3);
+
+                    // Prepare an insert statement
+                    $sql = "UPDATE tb_part SET qrcode=? WHERE uuid=?";
+                        
+                    if($stmt = mysqli_prepare($link, $sql)){
+                        // Bind variables to the prepared statement as parameters
+                        mysqli_stmt_bind_param($stmt, "ss", $param_qrimage, $param_uuid);
+                        
+                        // Set parameters
+                        $param_qrimage = $qrimage;
+                        $param_uuid = $uuid;
+                        
+                        // Attempt to execute the prepared statement
+                        if(mysqli_stmt_execute($stmt)){
+
+                            header("location: parts.php");
+                        } else{
+                            echo "Oops! Something went wrong. Please try again later.";
+                        }
+                    }
+                
                 // Redirect to login page
-                header("location: index.php");
+                // header("location: succes.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -141,9 +115,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-    
-    // Close connection
-    mysqli_close($link);
 }
 ?>
 
@@ -151,8 +122,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Docent Aanpassen</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Procestechniek</title>
     <style>
         .wrapper{
             width: 600px;
@@ -161,24 +134,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+
+
+<div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Part Toevoegen</h2>
+                    <h2 class="mt-5">Docent Toevoegen</h2>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">
                             <label>Naam</label>
-                            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                            <span class="invalid-feedback"><?php echo $username_err;?></span>
+                            <input type="text" name="test" class="form-control <?php echo (!empty($test_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $test; ?>">
+                            <span class="invalid-feedback"><?php echo $test_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-success" value="Toevoegen">
                         <input type="reset" class="btn btn-secondary" value="Reset">
-                        <a href="employees.php" class="btn btn-primary">Annuleren</a>
+                        <a href="parts.php" class="btn btn-primary">Annuleren</a>
                     </form>
                 </div>
             </div>        
         </div>
     </div>
-
-<?php include 'assets/includes/footer.php';?>
+    
+</body>
+</html>
