@@ -1,5 +1,40 @@
 <?php
 
+//    // Prepare a delete statement
+//    $sql = "DELETE FROM tb_part WHERE uuid = ?";
+    
+//    if($stmt = mysqli_prepare($link, $sql)){
+//        // Bind variables to the prepared statement as parameters
+//        mysqli_stmt_bind_param($stmt, "s", $param_uuid);
+       
+//        // Set parameters
+//        $param_uuid = trim($_POST["uuid"]);
+       
+//        // Attempt to execute the prepared statement
+//        if(mysqli_stmt_execute($stmt)){
+
+//            $uuid = $_POST["uuid"];
+
+//            $path = "parts/$uuid";
+
+//            array_map('unlink', glob("$path/*.*"));
+
+//            rmdir($path);
+           
+//            // Records deleted successfully. Redirect to landing page
+//            header("location: parts.php");
+//            exit();
+//        } else{
+//            echo "Oops! Something went wrong. Please try again later.";
+//        }
+//    }
+    
+//    // Close statement
+//    mysqli_stmt_close($stmt);
+   
+//    // Close connection
+//    mysqli_close($link);
+
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
@@ -13,40 +48,52 @@ if(isset($_POST["uuid"]) && !empty($_POST["uuid"])){
     // Include config file
     require_once "config.php";
     
-    // Prepare a delete statement
-    $sql = "DELETE FROM tb_part WHERE uuid = ?";
-    
-    if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $param_uuid);
-        
-        // Set parameters
-        $param_uuid = trim($_POST["uuid"]);
-        
-        // Attempt to execute the prepared statement
-        if(mysqli_stmt_execute($stmt)){
+    $uuid = trim($_POST["uuid"]);
 
-            $uuid = $_POST["uuid"];
+    $path = "parts/$uuid";
 
-            $path = "parts/$uuid";
-
-            array_map('unlink', glob("$path/*.*"));
-
-            rmdir($path);
-            
-            // Records deleted successfully. Redirect to landing page
-            header("location: parts.php");
-            exit();
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
+    if (!is_dir($path)) {
+        mkdir ("$path cannot be deleted due to an error");
     }
-     
-    // Close statement
-    mysqli_stmt_close($stmt);
-    
-    // Close connection
-    mysqli_close($link);
+    else {
+                // Prepare a delete statement
+        $sql = "DELETE FROM tb_part WHERE uuid = ?";
+            
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_uuid);
+            
+            // Set parameters
+            $param_uuid = trim($_POST["uuid"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+
+                $uuid = $_POST["uuid"];
+
+                $path = "parts/$uuid";
+
+                array_map('unlink', glob("$path/*.*"));
+
+                rmdir($path);
+                
+                // Records deleted successfully. Redirect to landing page
+                header("location: parts.php");
+                exit();
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+            
+        // Close statement
+        mysqli_stmt_close($stmt);
+        
+        // Close connection
+        mysqli_close($link);
+    }
+            
+
+ 
 } else{
     // Check existence of id parameter
     if(empty(trim($_GET["uuid"]))){

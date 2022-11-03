@@ -39,7 +39,7 @@ if(isset($_POST["iddoc"]) && !empty($_POST["iddoc"])){
 
                     $path = "parts/$uuid/$file";
 
-                                        // Use unlink() function to delete a file
+                    // Use unlink() function to delete a file
                     if (!unlink($path)) {
                         echo ("$path cannot be deleted due to an error");
                     }
