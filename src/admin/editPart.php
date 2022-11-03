@@ -100,6 +100,62 @@ session_start();
         </div>
     </div>
 
+    <div class="">
+        <?php
+
+        $sql = "SELECT tb_document.documentname, tb_document.iddoc, tb_type.name FROM tb_document
+        JOIN tb_type ON tb_document.type_id=tb_type.id
+        WHERE tb_document.uuid=?";
+
+        if($stmt = mysqli_prepare($link, $sql)){
+        mysqli_stmt_bind_param($stmt, "s", $param_uuid);
+
+        $param_uuid = $uuid;
+
+        if(mysqli_stmt_execute($stmt)){
+            $result = mysqli_stmt_get_result($stmt);
+
+            if(mysqli_num_rows($result) > 0){
+                echo '<table class="table">';
+                echo "<thead>";
+                    echo "<tr>";
+                        echo "<th scope='col'>Naam</th>";
+                        echo "<th scope='col'>Type</th>";
+                        echo "<th scope='col'>Actie</th>";
+                    echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+                while($row = mysqli_fetch_array($result)){
+                    echo "<tr>";
+                        echo "<td>" . $row['documentname'] . "</td>";
+                        echo "<td>" . $row['name'] . "</td>";
+                        echo "<td>";
+                            echo '<a href="deleteDoc.php?iddoc='. $row['iddoc'] .'&uuid='. $uuid .'" class="table-icons" title="Verwijder Docent" data-toggle="tooltip">Delete</a>';
+                        echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</tbody>";                            
+            echo "</table>";
+            // Free result set
+            mysqli_free_result($result);
+        }  else {
+                // Enable to redirect to error.php when uuid is not found
+                // header('Location: error.php');
+                // echo "Geen gegevens gevonden...";
+                // exit();
+            }
+        } else {
+                // Enable to redirect to error.php when error
+                // header('Location: error.php');
+            echo "Oeps! Er is iets fout gegaan...";
+        }
+        } else {
+        echo "Error";
+        }
+    
+        ?>
+    </div>
+
 </div>
 
 <script>
