@@ -192,9 +192,15 @@ if(isset($_GET["uuid"]) && !empty(trim($_GET["uuid"]))){
                 $result = mysqli_stmt_get_result($stmt);
     
                 if(mysqli_num_rows($result) > 0){
+                    echo "<div class=\"box\">";
+                    echo "<div id=" . $id . " class=\"content hideMe pre\">";
+                    
                     while($row = mysqli_fetch_array($result)){
-                        // echo '<h1> ' . $row['documentname'] . ' </h1>';
-                        $file = $row['documentname'];
+                                echo '<p>' . $row['documentname'] . '</p>';
+
+                        }
+                        echo "</div>";
+                        echo "</div>";
                     }
                     
                     mysqli_free_result($result);
@@ -210,23 +216,9 @@ if(isset($_GET["uuid"]) && !empty(trim($_GET["uuid"]))){
                     // header('Location: error.php');
                 echo "Oeps! Er is iets fout gegaan...";
             }
-        } else {
-            echo "Error";
-        }
-
-
-
-        $info = <<<INFO
-            <div class="box">
-                <div id="$id" class="content hideMe pre">
-                    <p>$info</p>
-                    <p>$uuid</p>
-                </div>
-            </div>
-            
-    INFO;
-        return $info;
+        
     }
+      
 
 ?>
 
