@@ -68,7 +68,7 @@ if(isset($_GET["uuid"]) && !empty(trim($_GET["uuid"]))){
 <?php
 // Get tab data
     $sql = "SELECT tb_category.name, tb_info.information FROM tb_category
-    JOIN tb_info ON tb_category.id=tb_info.id
+    JOIN tb_info ON tb_category.id=tb_info.category_id
     WHERE tb_info.uuid=?";
 
     if($stmt = mysqli_prepare($link, $sql)){
