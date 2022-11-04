@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate username
     if(empty(trim($_POST["name"]))){
-        $name_err = "Please enter a username.";
+        $name_err = "Vul een naam in.";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM tb_category WHERE name = ?";

@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate username
     if(empty(trim($_POST["name"]))){
-        $name_err = "Please enter a username.";
+        $name_err = "Vul een naam in.";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM tb_type WHERE name = ?";
@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $name_err = "Deze categorie bestaat al.";
+                    $name_err = "Deze type bestaat al.";
                 } else{
                     $name = trim($_POST["name"]);
                 }

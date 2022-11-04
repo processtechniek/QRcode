@@ -19,9 +19,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 // Validate password
 if(empty(trim($_POST["test"]))){
-    $test_err = "Please enter a password.";     
+    $test_err = "Vul een naam in.";     
 } else {
-    $test = trim($_POST["test"]);
+    
+    // Prepare a select statement
+    $sql = "SELECT id FROM tb_part WHERE name = ?";
+        
+    if($stmt = mysqli_prepare($link, $sql)){
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "s", $param_test);
+        
+        // Set parameters
+        $param_test = trim($_POST["test"]);
+        
+        // Attempt to execute the prepared statement
+        if(mysqli_stmt_execute($stmt)){
+            /* store result */
+            mysqli_stmt_store_result($stmt);
+            
+            if(mysqli_stmt_num_rows($stmt) == 1){
+                $test_err = "Deze part bestaat al.";
+            } else{
+                $test = trim($_POST["test"]);
+            }
+        } else{
+            echo "Oops! Something went wrong. Please try again later.";
+        }
+
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+    
 }
 
 
