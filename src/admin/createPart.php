@@ -140,7 +140,7 @@ $uuid = gen_uuid();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Docent Toevoegen</h2>
+                    <h2 class="mt-5">Part Toevoegen</h2>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">
                             <label>Naam</label>

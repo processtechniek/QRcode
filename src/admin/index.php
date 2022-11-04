@@ -21,7 +21,7 @@ if ($result=mysqli_query($link,$count)) {
         <div class="overzicht-container">
             <div class="aantal-studenten">
                 <div class="aantal-stundeten-text">
-                    <h2>Aantal Gebruikers</h2>
+                    <h2>Aantal Docenten</h2>
                     <div class="studentcount"><?php echo $partcount; ?></div>
                 </div>
                 <div class="aantal-studenten-icon">
