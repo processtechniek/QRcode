@@ -25,7 +25,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Docent Aanpassen</title>
+    <title>Procestechniek</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
@@ -38,6 +38,37 @@ session_start();
     </style>
 </head>
 <body>
+
+<?php
+// Get name from uuid from database
+    $sql = "SELECT name FROM tb_part WHERE uuid=?";
+
+    if($stmt = mysqli_prepare($link, $sql)){
+        mysqli_stmt_bind_param($stmt, "s", $param_uuid);
+
+        $param_uuid = $uuid;
+
+        if(mysqli_stmt_execute($stmt)){
+            $result = mysqli_stmt_get_result($stmt);
+
+            if(mysqli_num_rows($result) == 1){
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                echo $row["name"];
+            } else {
+                // Enable to redirect to error.php when uuid is not found
+                // header('Location: error.php');
+                echo "uuid niet gevonden";
+                exit();
+            }
+        } else {
+                // Enable to redirect to error.php when error
+                // header('Location: error.php');
+            echo "Oeps! Er is iets fout gegaan...";
+        }
+    }
+
+?>
 
 <ul class="nav nav-tabs tab">
   <li class="nav-item">
@@ -52,8 +83,62 @@ session_start();
 </ul>
 
 <div id="Algemeen" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p>
+    <?php
+    echo '<a href="createInfo.php?uuid='. $uuid .'" class="btn btn-primary"><i class="fa fa-plus"></i> Informatie Toevoegen</a>';
+    ?>
+
+            <?php
+
+            $sql = "SELECT tb_info.information, tb_info.id, tb_info.category_id, tb_category.name FROM tb_info
+            JOIN tb_category ON tb_info.category_id=tb_category.id
+            WHERE tb_info.uuid=?";
+
+            if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "s", $param_uuid);
+
+            $param_uuid = $uuid;
+
+            if(mysqli_stmt_execute($stmt)){
+                $result = mysqli_stmt_get_result($stmt);
+
+                if(mysqli_num_rows($result) > 0){
+                    echo '<table class="table">';
+                    echo "<thead>";
+                        echo "<tr>";
+                            echo "<th scope='col'>Categorie</th>";
+                            echo "<th scope='col'>Actie</th>";
+                        echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    while($row = mysqli_fetch_array($result)){
+                        echo "<tr>";
+                            echo "<td>" . $row['name'] . "</td>";
+                            echo "<td>";
+                                echo '<a href="editInfo.php?id='. $row['id'] .'" class="table-icons" title="Verwijder Docent" data-toggle="tooltip">Edit</a> '. " " .'';
+                                echo '<a href="deleteInfo.php?id='. $row['id'] .'" class="table-icons" title="Verwijder Docent" data-toggle="tooltip">Delete</a>';
+                            echo "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</tbody>";                            
+                echo "</table>";
+                // Free result set
+                mysqli_free_result($result);
+            }  else {
+                    // Enable to redirect to error.php when uuid is not found
+                    // header('Location: error.php');
+                    // echo "Geen gegevens gevonden...";
+                    // exit();
+                }
+            } else {
+                    // Enable to redirect to error.php when error
+                    // header('Location: error.php');
+                echo "Oeps! Er is iets fout gegaan...";
+            }
+            } else {
+            echo "Error";
+            }
+
+            ?>
 </div>
 
 <div id="Equipments" class="tabcontent">
@@ -62,7 +147,7 @@ session_start();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Docent Toevoegen</h2>
+                    <h2 class="mt-5">Bestand Toevoegen</h2>
                     <form action="upload.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="file" name="file">

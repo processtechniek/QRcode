@@ -13,7 +13,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     require_once "config.php";
     
     // Prepare a delete statement
-    $sql = "DELETE FROM tb_type WHERE id = ?";
+    $sql = "DELETE FROM tb_info WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -25,7 +25,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records deleted successfully. Redirect to landing page
-            header("location: type-cats.php");
+            header("location: parts.php");
             exit();
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -51,7 +51,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Procestechniek</title>
+    <title>Delete Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
@@ -65,14 +65,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5 mb-3">Verwijder Type</h2>
+                    <h2 class="mt-5 mb-3">Verwijder Informatie</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
-                            <p>Weet je zeker dat je deze type wilt verwijderen?</p>
+                            <p>Weet je zeker dat je deze informatie wilt verwijderen?</p>
                             <p>
                                 <input type="submit" value="Ja" class="btn btn-danger">
-                                <a href="employees.php" class="btn btn-secondary">Nee</a>
+                                <a href="parts.php" class="btn btn-secondary">Nee</a>
                             </p>
                         </div>
                     </form>

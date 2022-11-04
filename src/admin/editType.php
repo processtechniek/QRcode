@@ -11,8 +11,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
  
 // Define variables and initialize with empty values
-$username = $email = $roleid  = "";
-$username_err = $email_err = $roleid_err = "";
+$name = "";
+$name_err = "";
  
     // Processing form data when form is submitted
     if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -20,48 +20,30 @@ $username_err = $email_err = $roleid_err = "";
       $id = $_POST["id"];
         
     // Validate username
-    $input_username = trim($_POST["username"]);
-    if(empty($input_username)){
-        $username_err = "Dit veld is verplicht.";     
+    $input_name = trim($_POST["name"]);
+    if(empty($input_name)){
+        $name_err = "Dit veld is verplicht.";     
     } else{
-        $username = $input_username;
-    }
-
-    // Validate email
-    $input_email = trim($_POST["email"]);
-    if(empty($input_email)){
-        $email_err = "Dit veld is verplicht.";     
-    } else{
-        $email = $input_email;
-    }
-
-    // Validate roleid
-    $input_roleid = trim($_POST["roleid"]);
-    if(empty($input_roleid)){
-        $roleid_err = "Dit veld is verplicht.";     
-    } else{
-        $roleid = $input_roleid;
+        $name = $input_name;
     }
     
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($email_err) && empty($roleid_err)){
+    if(empty($name_err)){
         // Prepare an update statement
-        $sql = "UPDATE tb_user SET username=?, email=?, role_id=? WHERE id=?";
+        $sql = "UPDATE tb_type SET name=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssii", $param_username, $param_email, $param_roleid, $param_id);
+            mysqli_stmt_bind_param($stmt, "si", $param_name, $param_id);
             
             // Set parameters
-            $param_username = $username;
-            $param_email = $email;
-            $param_roleid = $roleid;
+            $param_name = $name;
             $param_id = $id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records updated successfully. Redirect to landing page
-                header("location: employees.php");
+                header("location: type-cats.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -81,7 +63,7 @@ $username_err = $email_err = $roleid_err = "";
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM tb_user WHERE id = ?";
+        $sql = "SELECT * FROM tb_type WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -99,9 +81,7 @@ $username_err = $email_err = $roleid_err = "";
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
                     // Retrieve individual field value
-                    $username = $row["username"];
-                    $email = $row["email"];
-                    $roleid = $row["role_id"];
+                    $name = $row["name"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
@@ -144,29 +124,16 @@ $username_err = $email_err = $roleid_err = "";
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Docent Aanpassen</h2>
+                    <h2 class="mt-5">Categorie Aanpassen</h2>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">
-                            <label>Gebruikersnaam</label>
-                            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" readonly>
-                            <span class="invalid-feedback"><?php echo $username_err;?></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" readonly>
-                            <span class="invalid-feedback"><?php echo $email_err;?></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Rol</label>
-                              <select name="roleid" class="form-control <?php echo (!empty($roleid_err)) ? 'is-invalid' : ''; ?>">
-                                <option value="<?php echo $roleid; ?>"><?php echo($roleid == 2) ? 'Beheerder' : 'Docent'; ?></option>
-                                <option value="<?php echo($roleid == 2) ? '1' : '2' ?>"><?php echo($roleid == 1) ? 'Beheerder' : 'Docent'; ?></option>
-                              </select>
-                            <span class="invalid-feedback"><?php echo $roleid_err; ?></span>
+                            <label>Naam</label>
+                            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
+                            <span class="invalid-feedback"><?php echo $name_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Update">
-                        <a href="employees.php" class="btn btn-secondary ml-2">Annuleren</a>
+                        <a href="type-cats.php" class="btn btn-secondary ml-2">Annuleren</a>
                     </form>
                 </div>
             </div>        

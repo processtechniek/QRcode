@@ -37,7 +37,7 @@
                                         echo "<td>" . $row['uuid'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="viewPart.php?uuid='. $row['uuid'] .'" class="table-icons" title="Bekijk Item" data-toggle="tooltip"><iconify-icon icon="bi:eye-fill"></iconify-icon></a>';
+                                            echo '<a href="http://localhost/Projects/Procestechniek/src/tablet/info.php?uuid='. $row['uuid'] .'" class="table-icons" title="Bekijk Item" data-toggle="tooltip" target="_blank"><iconify-icon icon="bi:eye-fill"></iconify-icon></a>';
                                             echo '<a href="editPart.php?uuid='. $row['uuid'] .'" class="table-icons" title="Update Item" data-toggle="tooltip"><iconify-icon icon="clarity:pencil-solid"></iconify-icon></a>';
                                             echo '<a href="deletePart.php?uuid='. $row['uuid'] .'" class="table-icons" title="Verwijder Item" data-toggle="tooltip"><iconify-icon icon="bxs:trash-alt"></iconify-icon></a>';
                                             echo '<a href="'. 'parts/' . $row['uuid'] . '/' . $row['qrcode'] .'" class="table-icons" title="Download QRCode" data-toggle="tooltip" download><iconify-icon icon="vaadin:qrcode"></iconify-icon></a>';
