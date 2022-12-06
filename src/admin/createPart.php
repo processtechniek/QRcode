@@ -49,6 +49,15 @@ if(empty(trim($_POST["test"]))){
         // Close statement
         mysqli_stmt_close($stmt);
     }
+
+    // Validate unitid
+    $input_unitid = trim($_POST["unitid"]);
+    if(empty($input_unitid)){
+        $unitid_err = "Dit veld is verplicht.";     
+    } else{
+        $unitid = $input_unitid;
+    }
+        
     
 }
 
@@ -80,17 +89,18 @@ $uuid = gen_uuid();
 
 
     // Check input errors before inserting in database
-    if(empty($test_err)){
+    if(empty($test_err)  && empty($unitid_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO tb_part (uuid, name) VALUES (?, ?)";
+        $sql = "INSERT INTO tb_part (uuid, name, unitid) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_uuid, $param_test);
+            mysqli_stmt_bind_param($stmt, "ssi", $param_uuid, $param_test, $param_unitid);
             
             $param_uuid = $uuid;
             $param_test = $test;
+            $param_unitid = $unitid;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -174,6 +184,29 @@ $uuid = gen_uuid();
                             <label>Naam</label>
                             <input type="text" name="test" class="form-control <?php echo (!empty($test_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $test; ?>">
                             <span class="invalid-feedback"><?php echo $test_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Unit</label>
+                            <select name="unitid">
+                            <?php
+
+                            $sql = "SELECT * FROM tb_unit";
+                            if($result = mysqli_query($link, $sql)){
+                                if(mysqli_num_rows($result) > 0){
+
+                                  while($row = mysqli_fetch_array($result)){
+                                    echo '<option value='. $row['id'] .'>'. $row['name'] .'</option>';
+                                  }
+
+                                  mysqli_free_result($result);
+                                } else {
+                                    echo "Geen units gevonden.";
+                                }
+                            } else {
+                                echo "Oops! Something went wrong. Please try again later.";
+                            }
+                            ?>
+                            </select>
                         </div>
                         <input type="submit" class="btn btn-success" value="Toevoegen">
                         <input type="reset" class="btn btn-secondary" value="Reset">

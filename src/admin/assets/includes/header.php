@@ -35,6 +35,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="sidenav-links">
             <a href="index.php"><iconify-icon icon="akar-icons:dashboard"></iconify-icon>Overzicht</a>
             <a href="type-cats.php"><iconify-icon icon="material-symbols:category-outline"></iconify-icon>Categoriën en Types</a>
+            <a href="units.php"><iconify-icon icon="mdi:graphics-processing-unit"></iconify-icon>Units</a>
             <a href="parts.php"><iconify-icon icon="akar-icons:shipping-box-01"></iconify-icon>Parts</a>
             <?php 
             
