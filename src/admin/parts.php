@@ -15,9 +15,6 @@
                   
                     $path = 'assets/qrcodes/';
 
-                    // IMPORTANT
-                    // https://stackoverflow.com/questions/35034428/how-to-merge-multiple-images-and-text-into-single-image
-
                     // Attempt select query execution
                     $sql = "SELECT tb_part.uuid, tb_part.id, tb_part.name, tb_part.qrcode
                     FROM tb_part";
