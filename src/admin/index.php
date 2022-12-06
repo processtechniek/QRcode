@@ -2,14 +2,19 @@
 
 require_once "config.php";
 
-$count = "SELECT * FROM tb_part";
+$count = "SELECT * FROM tb_user";
 if ($result=mysqli_query($link,$count)) {
     $usercount=mysqli_num_rows($result);
 }
 
-$count = "SELECT * FROM tb_user";
+$count = "SELECT * FROM tb_part";
 if ($result=mysqli_query($link,$count)) {
     $partcount=mysqli_num_rows($result);
+}
+
+$count = "SELECT * FROM tb_unit";
+if ($result=mysqli_query($link,$count)) {
+    $unitcount=mysqli_num_rows($result);
 }
 
 ?>
@@ -22,7 +27,7 @@ if ($result=mysqli_query($link,$count)) {
             <div class="aantal-studenten">
                 <div class="aantal-stundeten-text">
                     <h2>Aantal Docenten</h2>
-                    <div class="studentcount"><?php echo $partcount; ?></div>
+                    <div class="studentcount"><?php echo $usercount; ?></div>
                 </div>
                 <div class="aantal-studenten-icon">
                     <iconify-icon icon="charm:people"></iconify-icon>
@@ -30,8 +35,17 @@ if ($result=mysqli_query($link,$count)) {
             </div>
             <div class="aantal-items">
                 <div class="aantal-items-text">
+                    <h2>Aantal Units</h2>
+                    <div class="itemcount"><?php echo $unitcount; ?></div>
+                </div>
+                <div class="aantal-items-icon">
+                    <iconify-icon icon="akar-icons:shipping-box-01">
+                </div>
+            </div>
+            <div class="aantal-items">
+                <div class="aantal-items-text">
                     <h2>Aantal Parts</h2>
-                    <div class="itemcount"><?php echo $usercount; ?></div>
+                    <div class="itemcount"><?php echo $partcount; ?></div>
                 </div>
                 <div class="aantal-items-icon">
                     <iconify-icon icon="akar-icons:shipping-box-01">
