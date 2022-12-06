@@ -16,7 +16,7 @@ Dit project is gebouwd met de volgende programmeertalen:
 - [![HTML][html]](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [![CSS][css]](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [![PHP][php]](https://www.php.net/manual/en/)
-- [![MYSQL][mysql]](https://docs.oracle.com/en-us/iaas/mysql-database/doc/getting-started.html)
+- [![MYSQL][mysql]](https://dev.mysql.com/doc/)
 
 [html]: https://img.shields.io/badge/HTML-E44D26?style=for-the-badge
 [css]: https://img.shields.io/badge/CSS-264DE4?style=for-the-badge
