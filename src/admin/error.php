@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5 mb-3">Oeps...</h2>
+                    <h2 class="mt-5 mb-3">Oeps... er is iets fout gelopen!</h2>
                     <div class="alert alert-danger">Ga <a href="index.php" class="alert-link">terug</a> naar de website.</div>
                 </div>
             </div>        
