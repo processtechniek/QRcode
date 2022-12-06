@@ -39,7 +39,7 @@ if ($result=mysqli_query($link,$count)) {
                     <div class="itemcount"><?php echo $unitcount; ?></div>
                 </div>
                 <div class="aantal-items-icon">
-                    <iconify-icon icon="akar-icons:shipping-box-01">
+                    <iconify-icon icon="mdi:graphics-processing-unit">
                 </div>
             </div>
             <div class="aantal-items">
