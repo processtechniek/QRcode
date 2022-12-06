@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_bind_param($stmt, "s", $param_name);
             
             // Set parameters
-            $param_name= trim($_POST["name"]);
+            $param_name = trim($_POST["name"]);
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
