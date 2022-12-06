@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $name_err = "Deze type bestaat al.";
+                    $name_err = "Deze unit bestaat al.";
                 } else{
                     $name = trim($_POST["name"]);
                 }
