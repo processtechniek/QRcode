@@ -30,7 +30,3 @@ Font dat gebruikt wordt:
 
 [raleway]: https://img.shields.io/badge/Raleway-4DFF89?style=for-the-badge
 [drawsql]: https://img.shields.io/badge/DRAWSQL-4DFF89?style=for-the-badge
-
-## Authors
-
-- [@DevJelleS](https://github.com/DevJelleS)
