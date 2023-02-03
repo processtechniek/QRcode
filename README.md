@@ -33,13 +33,19 @@ Font dat gebruikt wordt:
 
 ## Beschrijving & Informatie
 
-Bestand: db_procestechniek.sql
-import dit sql bestand in een database in mysql met de naam db_procestecniek
-dit bestand bevat alle benodigde database data en maakt een gebruiker aan
-waarmee je kan inloggen.
+- Database & Inlog Informatie
+  Bestand: db_procestechniek.sql
+  import dit sql bestand in een database in mysql met de naam db_procestecniek
+  dit bestand bevat alle benodigde database data en maakt een gebruiker aan
+  waarmee je kan inloggen.
 
 <details> 
-  <summary>login data </summary>
-   **Gebruikersnaam:** admin <br>
-    **Wachtwoord:** airpods 
+  <summary>Login Informatie </summary>
+   Gebruikersnaam: admin <br>
+    Wachtwoord: airpods 
 </details>
+
+- Bestanden Informatie
+  import dit sql bestand in een database in mysql met de naam db_procestecniek
+  dit bestand bevat alle benodigde database data en maakt een gebruiker aan
+  waarmee je kan inloggen.
