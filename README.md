@@ -40,6 +40,6 @@ waarmee je kan inloggen.
 
 <details> 
   <summary>login data </summary>
-   gebruikersnaam: admin
-wachtwoord: airpods 
+   **Gebruikersnaam:** admin <br>
+    **Wachtwoord:** airpods 
 </details>
