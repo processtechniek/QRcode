@@ -30,3 +30,14 @@ Font dat gebruikt wordt:
 
 [raleway]: https://img.shields.io/badge/Raleway-4DFF89?style=for-the-badge
 [drawsql]: https://img.shields.io/badge/DRAWSQL-4DFF89?style=for-the-badge
+
+## Beschrijving & Informatie
+
+Bestand: db_procestechniek.sql
+import dit sql bestand in een database in mysql met de naam db_procestecniek
+dit bestand bevat alle benodigde database data en maakt een gebruiker aan
+waarmee je kan inloggen.
+#+html: <details><summary>login data</summary>
+gebruikersnaam: admin
+wachtwoord: airpods
+#+html: </details>
