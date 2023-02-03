@@ -48,6 +48,6 @@ Font dat gebruikt wordt:
 
 - Bestanden Informatie <br>
   Als je de map 'src' opend zie je 2 mappen en 1 bestand. Je hebt de map 'admin' hierin staan alle
-  bestanden die nodig zijn voor het admin/dashboard systeem en alle informatie van de parts die gemaakt zijn. <br>
-  En je hebt de map 'tablet' hierin staan alle bestanden die nodig zijn voor het tablet systeem (Wat je ziet als je een qr-code gescand hebt met de tablet). <br>
+  bestanden die nodig zijn voor het admin/dashboard systeem en alle informatie van de parts die gemaakt zijn. <br> <br>
+  En je hebt de map 'tablet' hierin staan alle bestanden die nodig zijn voor het tablet systeem (Wat je ziet als je een qr-code gescand hebt met de tablet). <br> <br>
   Het bestand index.php zorgt ervoor dat je wordt gestuurd naar de admin inlog pagina.
