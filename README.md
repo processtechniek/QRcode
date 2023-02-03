@@ -38,13 +38,16 @@ Font dat gebruikt wordt:
   import dit sql bestand in een database in mysql met de naam db_procestecniek
   dit bestand bevat alle benodigde database data en maakt een gebruiker aan
   waarmee je kan inloggen.
-    <details> 
+  <details>
     <summary>Login Informatie </summary>
     Gebruikersnaam: admin <br>
-        Wachtwoord: airpods 
+    Wachtwoord: airpods
     </details>
 
+  <br>
+
 - Bestanden Informatie <br>
-  import dit sql bestand in een database in mysql met de naam db_procestecniek
-  dit bestand bevat alle benodigde database data en maakt een gebruiker aan
-  waarmee je kan inloggen.
+  Als je de map 'src' opend zie je 2 mappen en 1 bestand. Je hebt de map 'admin' hierin staan alle
+  bestanden die nodig zijn voor het admin/dashboard systeem en alle informatie van de parts die gemaakt zijn. <br>
+  En je hebt de map 'tablet' hierin staan alle bestanden die nodig zijn voor het tablet systeem (Wat je ziet als je een qr-code gescand hebt met de tablet). <br>
+  Het bestand index.php zorgt ervoor dat je wordt gestuurd naar de admin inlog pagina.
