@@ -38,12 +38,11 @@ Font dat gebruikt wordt:
   import dit sql bestand in een database in mysql met de naam db_procestecniek
   dit bestand bevat alle benodigde database data en maakt een gebruiker aan
   waarmee je kan inloggen.
-
-<details> 
-  <summary>Login Informatie </summary>
-   Gebruikersnaam: admin <br>
-    Wachtwoord: airpods 
-</details>
+    <details> 
+    <summary>Login Informatie </summary>
+    Gebruikersnaam: admin <br>
+        Wachtwoord: airpods 
+    </details>
 
 - Bestanden Informatie <br>
   import dit sql bestand in een database in mysql met de naam db_procestecniek
