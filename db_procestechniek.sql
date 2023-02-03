@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2022 at 01:13 PM
+-- Generation Time: Feb 03, 2023 at 09:00 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -99,7 +99,8 @@ CREATE TABLE `tb_part` (
 
 INSERT INTO `tb_part` (`id`, `uuid`, `unitid`, `name`, `qrcode`) VALUES
 (38, 'd51265ce-84ab-48f8-b09c-b9cab17bda9e', 1, 'test', 'QR-d51265ce-84ab-48f8-b09c-b9cab17bda9e.png'),
-(41, 'a072da5a-8fdf-42de-9e78-fad334af8bef', 1, 'test 21421', 'QR-a072da5a-8fdf-42de-9e78-fad334af8bef.png');
+(41, 'a072da5a-8fdf-42de-9e78-fad334af8bef', 1, 'test 21421', 'QR-a072da5a-8fdf-42de-9e78-fad334af8bef.png'),
+(43, 'e8274f03-e525-407c-a067-af035599f342', 2, 'TestPart', 'QR-e8274f03-e525-407c-a067-af035599f342.png');
 
 -- --------------------------------------------------------
 
@@ -176,7 +177,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `email`, `password`, `role_id`) VALUES
-(4, 'Jelle', 'jelle.s3112@gmail.com', '$2y$10$59Z.KdZp.tRP3AkyHmzuMuST2jajGY0ODC1L.04FL6vIQ2d2gG7BC', 2);
+(5, 'admin', 'admin@admin.com', '$2y$10$7Z91C./f5/hqwFhcKYGs9uYoKrU7RrtohUesp6LnAWGJES7jRZjhS', 2);
 
 --
 -- Indexes for dumped tables
@@ -256,7 +257,7 @@ ALTER TABLE `tb_info`
 -- AUTO_INCREMENT for table `tb_part`
 --
 ALTER TABLE `tb_part`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tb_role`
@@ -274,13 +275,13 @@ ALTER TABLE `tb_type`
 -- AUTO_INCREMENT for table `tb_unit`
 --
 ALTER TABLE `tb_unit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
