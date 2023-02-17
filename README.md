@@ -51,3 +51,6 @@ Font dat gebruikt wordt:
   bestanden die nodig zijn voor het admin/dashboard systeem en alle informatie van de parts die gemaakt zijn. <br> <br>
   En je hebt de map 'tablet' hierin staan alle bestanden die nodig zijn voor het tablet systeem (Wat je ziet als je een qr-code gescand hebt met de tablet). <br> <br>
   Het bestand index.php zorgt ervoor dat je wordt gestuurd naar de admin inlog pagina.
+  
+  Deze Open Source software valt onder GNU General Public License version 3
+  
